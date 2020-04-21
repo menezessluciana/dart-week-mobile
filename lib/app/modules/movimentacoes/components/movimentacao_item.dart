@@ -20,17 +20,14 @@ class MovimentacaoItem extends StatelessWidget {
         ),
         ListTile(
           leading: CircleAvatar(
-            backgroundColor: item.categoria.tipo == 'TipoCategoria.despesa' ? Colors.red : Colors.blue,
-            child: Icon(
-              item.categoria.tipo == 'TipoCategoria.despesa'?
-               Icons.money_off : Icons.attach_money, 
-              color: Colors.white),
+            backgroundColor: item.categoria.tipo == 'despesa' ? Colors.red : Colors.blue,
+            child: Icon(item.categoria.tipo == 'despesa' ? Icons.money_off : Icons.attach_money, color: Colors.white),
           ),
           title: Text(item.descricao),
           subtitle: Text(item.categoria.nome),
           trailing: Container(
             padding: EdgeInsets.only(right: 10),
-            child: Text('R\$ ${numberFormat.format(item.valor)}',style: TextStyle(color: Colors.red)),
+            child: Text('R\$ ${numberFormat.format(item.valor)}',style: TextStyle(color:item.categoria.tipo == 'despesa' ? Colors.red : Colors.blue)),
           ),
         ),
       ],
