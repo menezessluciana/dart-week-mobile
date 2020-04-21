@@ -32,6 +32,31 @@ mixin _$PainelSaldoController on _PainelSaldoControllerBase, Store {
     }, _$dataAtom, name: '${_$dataAtom.name}_set');
   }
 
+  final _$_PainelSaldoControllerBaseActionController =
+      ActionController(name: '_PainelSaldoControllerBase');
+
+  @override
+  dynamic nextMonth() {
+    final _$actionInfo =
+        _$_PainelSaldoControllerBaseActionController.startAction();
+    try {
+      return super.nextMonth();
+    } finally {
+      _$_PainelSaldoControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic previousMonth() {
+    final _$actionInfo =
+        _$_PainelSaldoControllerBaseActionController.startAction();
+    try {
+      return super.previousMonth();
+    } finally {
+      _$_PainelSaldoControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     final string = 'data: ${data.toString()},anoMes: ${anoMes.toString()}';

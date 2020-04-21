@@ -3,7 +3,9 @@ import 'dart:io';
 import 'package:dart_week_mobile/app/modules/movimentacoes/components/painel_saldo/painel_saldo_controller.dart';
 import 'package:dart_week_mobile/app/utils/size_utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:intl/intl.dart';
 import 'package:sliding_sheet/sliding_sheet.dart';
 
 class PainelSaldoWidget extends StatefulWidget {
@@ -19,30 +21,33 @@ class PainelSaldoWidget extends StatefulWidget {
 class _PainelSaldoWidgetState extends ModularState<PainelSaldoWidget, PainelSaldoController> {
   @override
   Widget build(BuildContext context) {
-   return SlidingSheet(
-     elevation: 8,
-     cornerRadius: 30,
-     //especificacoes do slidingsheet
-     snapSpec: SnapSpec(
-       snap: true,
-       //o tamanho que ele pode ficar,
-       snappings: [0.1, 0.4],
-       positioning: SnapPositioning.relativeToAvailableSpace,
-     ),
-     headerBuilder: (_, state){
-       return Container(
-        width: 60,
-        height: 5,
-         decoration: BoxDecoration(
-           color: Colors.grey,
-           borderRadius: BorderRadius.circular(20),
-         ),
-       );
-     },
-     builder: (_, state) {
-       return _makeContent();
-     },
-    );
+   return Observer(builder: (_) {
+    return SlidingSheet(
+        elevation: 8,
+        cornerRadius: 30,
+        //especificacoes do slidingsheet
+        snapSpec: SnapSpec(
+          snap: true,
+          //o tamanho que ele pode ficar,
+          snappings: [0.1, 0.4],
+          positioning: SnapPositioning.relativeToAvailableSpace,
+        ),
+        headerBuilder: (_, state){
+          return Container(
+            width: 60,
+            height: 5,
+            decoration: BoxDecoration(
+              color: Colors.grey,
+              borderRadius: BorderRadius.circular(20),
+            ),
+          );
+        },
+        builder: (_, state) {
+          return _makeContent();
+        },
+        );
+    }
+   );
   }
 
   Widget _makeContent() {
@@ -56,16 +61,22 @@ class _PainelSaldoWidgetState extends ModularState<PainelSaldoWidget, PainelSald
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                IconButton(icon: Icon(Icons.arrow_back_ios)),
+                IconButton(
+                  icon: Icon(Icons.arrow_back_ios),
+                  onPressed: () => controller.previousMonth(),
+                  ),
                 Text(
-                  'Janeiro/2020',
+                  DateFormat.yMMM('pt_BR').format(controller.data),
                    style: TextStyle(
                      fontSize: 25,
                      fontWeight: FontWeight.bold,
                      color: Colors.green,
                    ),
                   ),
-                IconButton(icon: Icon(Icons.arrow_forward_ios)),
+                IconButton(
+                  icon: Icon(Icons.arrow_forward_ios),
+                  onPressed: () => controller.nextMonth(),
+                  ),
               ],
             ),
             SizedBox(height: Platform.isIOS ? 60: 30),
