@@ -28,10 +28,10 @@ class CustomDio {
 
   Dio get instance => _dio;
 
-  _onRequest(RequestOptions options) {
+  _onRequest(RequestOptions options) async {
     //pegará os tokens do shared_preferences
     print(options.uri.toString());
-    var token = UsuarioRepository().getToken();
+    var token = await UsuarioRepository().getToken();
     //adiciona o token dentro da requisição
     options.headers['Authorization'] = token;
   }
