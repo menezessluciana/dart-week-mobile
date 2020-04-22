@@ -1,6 +1,6 @@
 # dart_week_mobile
 
-App desenvolvido durante a Dart Week utilizando Flutter, MOBX para gerenciamento de estado, Flutter Modular e DIO para requisições http.
+App desenvolvido durante a Dart Week utilizando Flutter, MOBX para gerenciamento de estado, Flutter Modular e DIO para requisições http, consumindo backend desenvolvido em Dart.
 
 ## Getting Started
 
