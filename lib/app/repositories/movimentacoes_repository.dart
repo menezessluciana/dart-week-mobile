@@ -5,7 +5,7 @@ import 'package:dart_week_mobile/app/models/movimentacao_total_model.dart';
 class MovimentacoesRepository {
   Future<List<MovimentacaoModel>> getMovimentacoes(String anoMes) {
     var dio = CustomDio.withAuthentication().instance;
-    return dio.get('/movimentacoes/202004').then((res) => res.data.map<MovimentacaoModel>((m) => MovimentacaoModel.fromMap(m)).toList());
+    return dio.get('/movimentacoes/$anoMes').then((res) => res.data.map<MovimentacaoModel>((m) => MovimentacaoModel.fromMap(m)).toList());
   }
 
   Future<MovimentacaoTotalModel> getTotalMes(String anoMes) {
