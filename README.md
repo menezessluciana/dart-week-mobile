@@ -4,8 +4,8 @@ App desenvolvido durante a Dart Week utilizando Flutter, MOBX para gerenciamento
 
 ## Getting Started
 
-Rode:
 slidy run mobx_build - Preparando o MOBX.
+
 slidy run mobx_watch - Escutando alteração de estados.
 
 Scripts responsáveis para gerenciamento de estados do MOBX.
